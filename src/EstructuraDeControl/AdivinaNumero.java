@@ -20,13 +20,16 @@ public class AdivinaNumero {
         
         System.out.println("Ingresa un numero: ");
         byte numero = sc.nextByte();
-        
-        if (numero > aleatorio) {
-            System.out.println("Mas bajo.");
-        } else if (numero < aleatorio) {
-            System.out.println("Mas alto.");
-        } else {
-            System.out.println("Es correcto le atinaste al numero.");
+
+        while (numero != aleatorio) {
+            
+            if (numero > aleatorio) {
+                System.out.println("Mas bajo.");
+            } else if (numero < aleatorio) {
+                System.out.println("Mas alto.");
+            } else {
+                System.out.println("Es correcto le atinaste al numero.");
+            }
         }
         
         sc.close();
