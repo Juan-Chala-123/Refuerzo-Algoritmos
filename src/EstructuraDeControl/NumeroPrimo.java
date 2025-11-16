@@ -13,15 +13,30 @@ import java.util.Scanner;
 public class NumeroPrimo {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        
-        System.out.println("Ingresa numero 1: ");
+
+        System.out.print("Ingresa el número de inicio: ");
         int num1 = sc.nextInt();
-        
-        System.out.println("Ingresa numero 2: ");
+
+        System.out.print("Ingresa el número de fin: ");
         int num2 = sc.nextInt();
-        
-        for (int i = num1; i < num2; i++) {
-            
+
+        System.out.println("Números primos entre " + num1 + " y " + num2 + ":");
+
+        for (int num = num1; num <= num2; num++) {
+            if (num > 1) {
+                boolean primo = true;
+
+                for (int i = 2; i <= Math.sqrt(num); i++) {
+                    if (num % i == 0) {
+                        primo = false;
+                        break;
+                    }
+                }
+
+                if (primo) {
+                    System.out.print(num + " ");
+                }
+            }
         }
     }
 }
