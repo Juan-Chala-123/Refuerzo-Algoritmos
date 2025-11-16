@@ -22,9 +22,21 @@ public class Inventario {
         productos.add(producto);
     }
     
-    public void mostrarProductos() {
-        for (Producto p : productos) {
-            p.mostrarProducto();
+    public Producto buscarProducto(String nombre) {
+        for (Producto producto : productos) {
+            // Usamos .equals() para comparar los nombres correctamente
+            if (producto.getNombre().equals(nombre)) {
+                return producto;
+            }
         }
+        return null; // Si no encuentra el producto, retorna null
+    }
+    
+    public int calcularValorTotal() {
+        int total = 0;
+        for (Producto producto : productos) {
+            total += producto.valorTotal();
+        }
+        return total;
     }
 }

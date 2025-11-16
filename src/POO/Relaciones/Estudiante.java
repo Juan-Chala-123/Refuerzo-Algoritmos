@@ -2,28 +2,31 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package POO.Inventario;
+package POO.Relaciones;
 
 /**
  *
  * @author CHALA RAMIREZ
  */
-public class Producto {
+class Estudiante {
     private String nombre;
-    private int precio;
-    private byte cantidad;
-    
-    public Producto(String nombre, int precio, byte cantidad) {
+    private String matricula;
+
+    public Estudiante(String nombre, String matricula) {
         this.nombre = nombre;
-        this.precio = precio;
-        this.cantidad = cantidad;
+        this.matricula = matricula;
     }
-    
+
     public String getNombre() {
         return nombre;
     }
-    
-    public int valorTotal() {
-        return this.precio * this.cantidad;
+
+    public String getMatricula() {
+        return matricula;
+    }
+
+    @Override
+    public String toString() {
+        return "Estudiante: " + nombre + " | Matrícula: " + matricula;
     }
 }
