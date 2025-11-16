@@ -59,5 +59,6 @@ public class Ahorcado {
 
         System.out.println("\nTe has quedaste sin intentos. La palabra es: " + palabraSecreta);
 
+        sc.close();
     }
 }
