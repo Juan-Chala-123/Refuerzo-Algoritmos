@@ -10,7 +10,6 @@ package RazonamientoLogicaAlgortimica.PlanificadorTareas;
  */
 public class Main {
     public static void main(String[] args) {
-
         Planificador plan = new Planificador();
 
         plan.agregarTarea("Estudiar Java", 1);
