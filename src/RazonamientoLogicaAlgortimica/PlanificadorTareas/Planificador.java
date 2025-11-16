@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Planificador {
-
     private List<Tarea> tareas;
 
     public Planificador() {
