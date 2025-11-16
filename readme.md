@@ -2,268 +2,186 @@
 
 Este repositorio contiene una serie de ejercicios en Java organizados en diferentes carpetas según su temática. A continuación, se documenta cada uno de los ejercicios, explicando su propósito y las principales líneas de código.
 
----
+## Estructura De Control
 
-## EstructuraDeControl
+### 1. Números primos en un rango
+### Codigo: NumeroPrimo.java
+**Propósito:** Solicita al usuario dos números (inicio y fin) y muestra todos los números primos dentro de ese rango.
 
-### 1. AdivinaNumero.java
-**Propósito:** Implementa un juego donde el usuario debe adivinar un número generado aleatoriamente por el programa.
+**Estrucutra:** condicionales, bucles anidados, funciones.
 
-- **Lógica principal:** Se utiliza `Math.random()` para generar un número aleatorio y un bucle `while` para permitir múltiples intentos.
-- **Entrada del usuario:** Se captura con `Scanner`.
-- **Condicionales:** Se evalúa si el número ingresado es mayor, menor o igual al número generado.
+**Desarrollo:**
 
----
+1. Lectura de datos con Scanner
 
-### 2. CajeroAutomatico.java
-**Propósito:** Simula un cajero automático con opciones como consultar saldo, retirar dinero y salir.
+    ```java
+    Scanner sc = new Scanner(System.in);
 
-- **Menú:** Implementado con un bucle `do-while` y un `switch` para manejar las opciones.
-- **Operaciones:** Variables para almacenar el saldo y realizar operaciones básicas.
+    System.out.print("Ingresa el número de inicio: ");
+    int num1 = sc.nextInt();
 
----
+    System.out.print("Ingresa el número de fin: ");
+    int num2 = sc.nextInt();
+    ```
 
-### 3. CalculadoraEdad.java
-**Propósito:** Calcula la edad de una persona a partir de su año de nacimiento.
+- Se crea un objeto Scanner para leer datos desde el teclado.
+    
+    El usuario ingresa dos números:
 
-- **Entrada:** Año de nacimiento ingresado por el usuario.
-- **Cálculo:** Se resta el año actual al año ingresado.
+    - num1: inicio del rango.
 
----
+    - num2: fin del rango.
 
-### 4. ContarPalabras.java
-**Propósito:** Cuenta el número de palabras en una frase ingresada por el usuario.
+**Logica:**
 
-- **Lógica:** Divide la frase usando `split(" ")` y cuenta los elementos del arreglo resultante.
+```java
+    for (int num = num1; num <= num2; num++) {
+        if (num > 1) {
+            boolean primo = true;
 
----
+            for (int i = 2; i <= Math.sqrt(num); i++) {
+                if (num % i == 0) {
+                    primo = false;
+                    break;
+                }
+            }
 
-### 5. Contraseña.java
-**Propósito:** Verifica si una contraseña ingresada coincide con una almacenada previamente.
+            if (primo) {
+                System.out.print(num + " ");
+            }
+        }
+    }
+```
 
-- **Seguridad:** Compara cadenas de texto y permite múltiples intentos.
+- **Bucle `for` Externo:** Itera a través de todos los números en el rango [num1, num2].
 
----
+- Excluye números ≤ 1 (no son primos).
 
-### 6. Fibonacci.java
-**Propósito:** Genera la secuencia de Fibonacci hasta un número dado.
+- **Verificación:**
 
-- **Lógica:** Usa un bucle para calcular los términos de la secuencia.
+  - Inicializa primo = true (asumimos que es primo hasta probar lo contrario).
 
----
+  - solo verifica divisores hasta √num.
 
-### 7. MaximoMinimo.java
-**Propósito:** Encuentra el número máximo y mínimo en una lista de números ingresados por el usuario.
+  - Si encuentra algún divisor, marca primo = false y termina la verificación.
 
-- **Lógica:** Usa variables auxiliares para almacenar los valores máximo y mínimo.
+- Imprime el número si pasa todas las verificaciones.
 
----
+- O(n√n) donde n es el tamaño del rango.
 
-### 8. NumeroPrimo.java
-**Propósito:** Determina si un número ingresado es primo.
+- O(1) - uso constante de memoria.
 
-- **Lógica:** Usa un bucle para verificar divisores del número.
 
----
+### 2. Serie de Fibonacci con límite
 
-### 9. PromedioCalificaciones.java
-**Propósito:** Calcula el promedio de un conjunto de calificaciones ingresadas.
+### Codigo: Fibonacci.java
 
-- **Lógica:** Suma las calificaciones y divide entre el número total.
+**Proposito:** Genera los primeros n números de la serie de Fibonacci, donde n es ingresado por el usuario.
 
----
+**Estructura:** bucle for o while, variables acumuladoras.
 
-### 10. TablaMultiplicacion.java
-**Propósito:** Genera la tabla de multiplicar de un número ingresado.
+**Desarrollo:**
 
-- **Lógica:** Usa un bucle para calcular y mostrar los resultados.
-
----
-
-## POO (Programación Orientada a Objetos)
-
-### 1. CuentaBancaria.java
-**Propósito:** Representa una cuenta bancaria con operaciones como depósito y retiro.
-
-- **Clases y métodos:** Define atributos como `saldo` y métodos para las operaciones.
-
----
-
-### 2. Estudiante.java
-**Propósito:** Modela un estudiante con atributos como nombre, edad y calificaciones.
-
-- **Métodos:** Incluye métodos para calcular el promedio de calificaciones.
-
----
-
-### 3. Persona.java
-**Propósito:** Representa una persona con atributos básicos como nombre y edad.
-
-- **Uso:** Base para otros ejercicios de POO.
-
----
-
-### 4. RelojDigital.java
-**Propósito:** Simula un reloj digital que muestra la hora actual.
-
-- **Lógica:** Usa la clase `LocalTime` para obtener la hora del sistema.
-
----
-
-### 5. Vehiculo.java
-**Propósito:** Modela un vehículo con atributos como marca, modelo y velocidad.
-
-- **Métodos:** Incluye métodos para acelerar y frenar.
-
----
-
-## FigurasGeométricas
-
-### 1. Circulo.java
-**Propósito:** Calcula el área y el perímetro de un círculo.
-
-- **Fórmulas:** Usa `Math.PI` para los cálculos.
-
----
-
-### 2. Cuadrado.java
-**Propósito:** Calcula el área y el perímetro de un cuadrado.
-
-- **Atributos:** Lado del cuadrado.
-
----
-
-### 3. Figura.java
-**Propósito:** Clase base para figuras geométricas.
-
-- **Uso:** Heredada por otras clases como `Circulo` y `Cuadrado`.
-
----
-
-### 4. Main.java
-**Propósito:** Punto de entrada para probar las figuras geométricas.
-
-- **Lógica:** Crea instancias de las figuras y muestra sus propiedades.
-
----
-
-### 5. Triangulo.java
-**Propósito:** Calcula el área y el perímetro de un triángulo.
-
-- **Fórmulas:** Usa la base y la altura para el área.
-
----
-
-## Herencia
-
-### 1. Animal.java
-**Propósito:** Clase base para animales.
-
-- **Atributos:** Nombre y edad.
-
----
-
-### 2. Gato.java
-**Propósito:** Clase que hereda de `Animal` y agrega comportamientos específicos.
-
-- **Métodos:** Incluye un método para maullar.
-
----
-
-### 3. Perro.java
-**Propósito:** Clase que hereda de `Animal` y agrega comportamientos específicos.
-
-- **Métodos:** Incluye un método para ladrar.
-
----
-
-### 4. Main.java
-**Propósito:** Prueba las clases de herencia.
-
-- **Lógica:** Crea instancias de `Perro` y `Gato`.
-
----
-
-## Inventario
-
-### 1. Inventario.java
-**Propósito:** Gestiona un inventario de productos.
-
-- **Atributos:** Lista de productos.
-
----
-
-### 2. Producto.java
-**Propósito:** Representa un producto con atributos como nombre y precio.
-
----
-
-### 3. Main.java
-**Propósito:** Prueba el sistema de inventario.
-
----
-
-## JuegoPersonajes
-
-### 1. Personaje.java
-**Propósito:** Representa un personaje con atributos como nombre y puntos de vida.
-
----
-
-### 2. Main.java
-**Propósito:** Prueba el sistema de personajes.
-
----
-
-## Relaciones
-
-### 1. Curso.java
-**Propósito:** Representa un curso con una lista de estudiantes.
-
----
-
-### 2. Docente.java
-**Propósito:** Representa un docente asociado a un curso.
-
----
-
-### 3. Estudiante.java
-**Propósito:** Representa un estudiante inscrito en un curso.
-
----
-
-### 4. Main.java
-**Propósito:** Prueba las relaciones entre cursos, docentes y estudiantes.
-
----
-
-## RazonamientoLogicaAlgortimica
-
-### 1. Ahorcado.java
-**Propósito:** Implementa el juego del ahorcado.
-
----
-
-### 2. CaminosCuadricula.java
-**Propósito:** Calcula los caminos posibles en una cuadrícula.
-
----
-
-### 3. NumerosAmigos.java
-**Propósito:** Determina si dos números son amigos.
-
----
-
-### 4. SimulacionFila.java
-**Propósito:** Simula una fila de personas.
-
----
-
-### 5. PlanificadorTareas
-**Propósito:** Gestiona tareas con un planificador.
-
-- **Clases:** `Planificador` y `Tarea`.
-
----
-
-Este archivo puede expandirse con más detalles según sea necesario.
+1. Se crea un objeto Scanner para leer datos desde el teclado.
+
+```java
+Scanner sc = new Scanner(System.in);
+        
+System.out.println("Ingresa el numero hasta donde quieres llegar: ");
+int n = sc.nextInt();
+```
+
+**Logica:**
+
+```java
+int fibonacci = 0;
+int num = 0;
+int num2 = 1;
+        
+for (int i = 0; i < n; i++) {
+    fibonacci = num2 + num;
+            
+    System.out.println("Resultado: " + num + " + " + num2 + " = " + fibonacci);
+            
+    num = num2;
+    num2 = fibonacci;
+}
+```
+
+Inicializamos:
+  - num = 0
+  - num2 = 1
+
+Bucle `for`:
+- Calcula el siguiente término: fibonacci = num + num2
+- Actualiza variables para la siguiente iteración
+- num toma el valor de num2
+- num2 toma el valor del nuevo fibonacci
+- Continua el ciclo
+
+### 3. Promedio de calificaciones
+### Codigo: PromedioCalificaciones.java
+**Proposito:** Pide al usuario las calificaciones de varios estudiantes (cantidad determinada por el usuario). Calcula y muestra el promedio general y cuántos están por encima del promedio.
+
+**Estructura:** bucle for, listas, condicionales.
+
+**Desarrollo:**
+
+1. Se crea un objeto Scanner para leer datos desde el teclado.
+
+```java
+Scanner sc = new Scanner(System.in);
+        
+System.out.println("Ingresa la cantidad de estudiantes: ");
+byte e = sc.nextByte();
+
+System.out.println("Ingresa la cantidad de notas que vas a ingresar: ");
+byte n = sc.nextByte();
+```
+
+**Desarrollo:**
+
+```java
+byte encima = 0;
+        
+List<Double> promedios = new ArrayList<>();
+List<String> nombres = new ArrayList<>();
+        
+for (int i = 0; i < e; i++) {
+    System.out.println("Estudiante " + (i+1));
+    System.out.println("Nombre Estudiante: ");
+    sc.nextLine();
+    String nombre = sc.nextLine();
+    nombres.add(nombre);
+            
+    List<Double> notas = new ArrayList<>();
+    double suma = 0;
+
+    for (int a = 0; a < n; a++) {
+        System.out.println("Ingresa la nota " + (a+1));
+        double nota = sc.nextDouble();
+        notas.add(nota);
+        suma += nota;
+    }
+
+    double promedio = (suma / n);
+    promedios.add(promedio);
+    System.out.println("Promedio del Estudiante " + nombre + ": " + promedio);         
+}
+        
+double total = 0;
+for (double p : promedios) {
+    total += p;
+}
+        
+double pGeneral = total / e;
+        
+for (double p : promedios) {
+    if (p > pGeneral) {
+        encima++;
+    }
+}
+        
+System.out.println("\nPromedio general del grupo: " + pGeneral);
+System.out.println("Estudiantes por encima del promedio general: " + encima);
+```
