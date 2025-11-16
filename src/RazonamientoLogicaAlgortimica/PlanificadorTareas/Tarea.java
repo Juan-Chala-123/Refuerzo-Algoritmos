@@ -9,9 +9,8 @@ package RazonamientoLogicaAlgortimica.PlanificadorTareas;
  * @author CHALA RAMIREZ
  */
 public class Tarea {
-
     private String nombre;
-    private int prioridad;     // 1 = alta, 2 = media, 3 = baja
+    private int prioridad;
     private boolean completada;
 
     public Tarea(String nombre, int prioridad) {
