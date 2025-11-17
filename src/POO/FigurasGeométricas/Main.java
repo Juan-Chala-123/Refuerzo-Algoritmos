@@ -10,9 +10,9 @@ package POO.FigurasGeométricas;
  */
 public class Main {
     public static void main(String[] args) {
-        Figura cuadrado = new Cuadrado(5);
-        Figura circulo = new Circulo(3);
-        Figura triangulo = new Triangulo(4, 6);
+        Cuadrado cuadrado = new Cuadrado(5);
+        Circulo circulo = new Circulo(3);
+        Triangulo triangulo = new Triangulo(4, 6);
 
         System.out.println("Área del Cuadrado: " + cuadrado.calcularArea());
         System.out.println("Área del Círculo: " + circulo.calcularArea());
