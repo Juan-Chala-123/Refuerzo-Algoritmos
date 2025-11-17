@@ -52,5 +52,7 @@ public class Estudiante {
         e.calcular(promedio);
         
         e.aprobar(promedio);
+
+        sc.close();
     }
 }
