@@ -1,3 +1,7 @@
+**Nombre:** Juan Pablo Chala Ramirez
+
+**Ficha:** 3145556
+
 # Taller de Refuerzo - Documentación de Ejercicios
 
 Este repositorio contiene una serie de ejercicios en Java organizados en diferentes carpetas según su temática. A continuación, se documenta cada uno de los ejercicios, explicando su propósito y las principales líneas de código.
@@ -525,8 +529,584 @@ if (contrasena.length() >= 8) {
 ## Ejercicios con Programación Orientada a Objetos (POO)
 
 ### 11. Clase Persona
+### Codigo: POO/Persona.java
 
+**Proposito:** Crea una clase Persona con atributos: nombre, edad y documento. Implementa un método que indique si la persona es mayor de edad.
 
+**Conceptos:** encapsulamiento, métodos.
+
+**Desarrollo:**
+
+Se crea la clase Persona, junto con atributos como nombre, edad y documento, con modificadores de acceso `private`. Se crea el constructor. Metodo para `mayorEdad()`, donde se valida la edad de la persona si es mayor de edad de acuerdo al territorio de `Colombia`, donde la myoria de edad es de 18 años en adelante.
+
+```java
+public static void main(String[] args) {
+    // Creamos los objetos Persona
+    Persona p1 = new Persona("Juan", (byte) 23, "SJ382D");
+    Persona p2 = new Persona("Luis", (byte) 17, "HFSKN4W");
+      
+    // Llamamos para cad persona el metodo mayorEdad
+    p1.mayorEdad();
+    p2.mayorEdad();
+}
+```
+
+### 12. Clase Vehículo
+### Codigo: POO/Vehiculo.java
+
+**Proposito:** Crea una clase Vehículo con atributos: marca, modelo y velocidad. Agrega métodos acelerar() y frenar() que modifiquen la velocidad.
+
+**Conceptos:** atributos, encapsulamiento.
+
+**Desarrollo:**
+
+Creamos la clase Vehiculo, donde le ponemos atributos como `marca`, `modelo` y `velocidad`. Creamos el constructor.
+```java
+// Metodo setVelocidad(), para modificar la velocidad
+public void setVelocidad(byte velocidad) {
+    this.velocidad = velocidad;
+}
+    
+// Metodo acelerar(), para mostrar si el vehiculo acelero de acuerdo al setVelocidad()
+public void acelerar() {
+    System.out.println("El vehiculo acelero a " + this.velocidad + " Km.");
+}
+
+// Metodo frenar(), para mostrar la velocidad cuando baje.
+public void frenar() {
+    System.out.println("El vehiculo desacelero a " + this.velocidad + " Km.");
+}
+```
+```java
+// Creamos el objeto Vehiculo
+Vehiculo v = new Vehiculo("Honda", "2019", (byte) 34);
+
+// MOstramos informacion del objeto
+System.out.println("Marca: " + v.marca);
+System.out.println("Modelo: " + v.modelo);
+System.out.println("Velocidad: " + v.velocidad);
+
+// Llamamos el metod setVelocidad(), para modifcar la velocidad
+v.setVelocidad((byte) 12);
+
+// Y mostramos la nueva velocidad, cuando el vehiculo frene
+v.frenar();
+```
+
+### 13. Cuenta Bancaria
+### Codigo: POO/CuentaBancaria
+
+**Proposito:** Define una clase CuentaBancaria con saldo, titular y número de cuenta. Implementa métodos depositar(), retirar() y mostrarSaldo(). Evita que el saldo sea negativo.
+
+**Conceptos:** encapsulamiento, validaciones.
+
+**Desarrollo:**
+
+Creamos la clase `CuentaBancaria`, junto con los atributos `int saldo`, `String titular` y `String numero`. Creamos el constructor.
+
+```java
+// Metodo depositar(), que recibe como parametro monto y se le suma al saldo
+public void depositar(int monto) {
+    this.saldo += monto;     
+}
+
+// Metodo retirar(), recibe como parametro monto, y se valida si el monto a retirar es mayor a cero, si es menor o igual al saldo en la cuenta y muestra los respectivos mensajes de acuerdo a cada escenario
+public void retirar(int monto) {
+    if (monto < 0) {
+        System.out.println("El monto a retirar no puede ser negativo.");
+    } else if (this.saldo >= monto) {
+        this.saldo -= monto;
+        System.out.println("Retiro exitoso. Saldo actual: " + this.saldo);
+    } else {
+        System.out.println("No se puede retirar. Saldo insuficiente.");
+    }
+}
+
+// Metodo mostrarSaldo(), simplemente muestra el saldo de la persona
+public void mostrarSaldo() {
+    System.out.println("Tu saldo actual es de " + this.saldo);
+}
+```
+
+```java
+// Objeto Scanner para ingresar los datos por medio del teclado
+Scanner sc = new Scanner(System.in);
+
+// Creamos el obejto CuentaBancaria
+CuentaBancaria cb = new CuentaBancaria(342142, "Juan", "KSV693");
+
+// Informacion sobre la cuenta
+System.out.println("Saldo: " + cb.saldo);
+System.out.println("Titular: " + cb.titular);
+System.out.println("Numero de Cuenta: " + cb.numero);
+        
+// Se solicita al usuario que escoja lo que quiere hacer
+System.out.println("Ingresa la operacion que quieres hacer (1-depositar, 2-retirar, 3-Consultar Saldo): ");
+        byte n = sc.nextByte();
+
+// Validacion de acuerdo a la opcion
+if (n == 1) {
+    System.out.println("¿Cuanto deseas ingresar? ");
+    int monto = sc.nextInt();
+    cb.depositar(monto);
+    System.out.println("Se ha deposito " + monto + " en su cuenta bancaria.");
+    System.out.println("Monto actual: " + cb.saldo);
+} else if (n == 2) {
+    System.out.println("¿Cuanto deseas retirar? ");
+    int monto = sc.nextInt();
+    cb.retirar(monto);
+} else if (n == 3) {
+    cb.mostrarSaldo();
+} else {
+    System.out.println("Erro: Tienen que ser uno de los tres numeros, 1, 2 o 3.");
+}
+```
+
+### 14. Clase Estudiante
+### Codigo: POO/Estudiante.java
+
+**Proposito:** Crea una clase Estudiante con nombre, programa y lista de calificaciones. Incluye un método para calcular el promedio y otro para mostrar si aprobó.
+
+**Conceptos:** listas, métodos, condicionales.
+
+**Desarrollo:**
+
+Creamos la clase Estudiante, junto con los atributos `String nombre` y `String programa`. Creamos el constructor.
+
+```java
+// Metodo calcular(), que recibe el parametro de promedio y muestra el promedio del estudiante
+public void calcular(double promedio) {
+    System.out.println("Su promedio es de: " + promedio);
+}
+
+// Metodo aprobar(), recibe el parametro promedio, y valida si el promedio es mayor de 3.0, el estudiante aprueba. Si no, pues no aprueba.
+public void aprobar(double promedio) {
+    if (promedio >= 3.0) {
+        System.out.println("El estudiante aprueba el programa.");
+    } else {
+        System.out.println("El estudiante no aprueba el programa.");
+    }
+}
+```
+```java
+Scanner sc = new Scanner(System.in);
+
+// Creamos el objeto Estudiante
+Estudiante e = new Estudiante("Juan", "Ingenieria");
+// Incializamos la variable suma en o
+double suma = 0;    
+// Creamos una lista con la variable notas
+List<Double> notas = new ArrayList<>();
+
+// Pide la cantidad de notas a ingresar
+System.out.println("Ingresa el numero de notas que va ingresar: ");
+byte n = sc.nextByte();
+for (int i = 0; i < n; i++) {
+    // Ingreso de cada nota
+    System.out.println("Ingresa la nota " + (i+1));
+    double nota = sc.nextDouble();
+    // Se añade a la lista
+    notas.add(nota);
+    suma += nota;
+}
+
+// Promediamos las notas
+double promedio = suma / (double) n;
+
+// Llamamos a los metodos de calcular() y aprobar(), para valiar si aprobo o no el estudiante.
+e.calcular(promedio);
+        
+e.aprobar(promedio);
+
+sc.close();
+```
+
+### 15. Herencia – Animales
+### Codigo: 
+```
+POO/Herencia/
+        Animal.java
+        Gato.java
+        Perro.Java
+        Main.java
+```
+
+**Proposito:** Crea una clase base Animal con el método hacerSonido(). Subclases Perro y Gato sobrescriben el método.
+
+**Conceptos:** herencia, polimorfismo.
+
+**Desarrollo:**
+
+Creamos la calse padre abstracta `Animal`, con el atributo `String nombre`. Creamos el constructor.
+
+```java
+// Creamos el metodo abstracto hacerSonido(), que va hacer sobrescito por las clases hijas
+public abstract void hacerSonido();
+```
+
+clase `Gato`
+```java
+// Llama el constructor de la clase Padre
+public Gato(String nombre) {
+    super(nombre);
+}
+
+// El metodo hacerSonido() es modificado por la clase hija Gato, quien lo ajusta a su necesidad
+@Override
+public void hacerSonido() {
+    System.out.println("El gato " + this.nombre + " hace Miau Miau.");
+}
+```
+
+clase `Perro`
+```java
+...
+
+// Modifica de igual forma el metodo de acuerdo a su necesidad.
+@Override
+public void hacerSonido() {
+    System.out.println("El perro " + this.nombre + " hace Gua Gua. ");
+}
+```
+
+clase `Main`
+```java
+// Creamos los objetos Perro y Gato. Y llamamos los metodos de hacerSonido()
+Perro p = new Perro("Greta");
+p.hacerSonido();
+        
+Gato g = new Gato("Michi");
+g.hacerSonido();
+```
+
+### 16. Inventario de Productos
+### Codigo:
+```
+POO/Inventario/
+        Inventario.java
+        Producto.java
+        Main.java
+```
+
+**Proprosito:** Crea una clase Producto (nombre, precio, cantidad). Crea una clase Inventario que almacene productos y permita agregar, buscar y calcular el valor total del inventario.
+
+**Conceptos:** composición, colecciones.
+
+**Desarrollo:**
+
+Creamos la clase `Producto`, junto con los atributos `String nombre`, `int precio` y `byte cantidad`. Creamos el metodo `getNombre()`, para capturar el nombre del producto, y creamos el metodo `valorTotal()`, para calcular el valor a cada producto.
+
+clase `Inventario`
+```java
+// Creamos la lista  para guardar los prodcutos de la clase Producto
+private List<Producto> productos;
+
+// Inicializamos la lista Productos con el ArrayList
+public Inventario() {
+    this.productos = new ArrayList<>();
+}
+```
+```java
+// Metodo para agregar prodcutos a la lista.
+public void agregarProducto(Producto producto) {
+    productos.add(producto);
+}
+```
+```java
+//Busca un producto por su nombre dentro de la lista. Recorre todos los productos uno por uno.
+public Producto buscarProducto(String nombre) {
+    for (Producto producto : productos) {
+        // Usamos .equals() para comparar los nombres correctamente
+        if (producto.getNombre().equals(nombre)) {
+                return producto;
+        }
+    }
+    return null; // Si no encuentra el producto, retorna null
+}
+```
+```java
+// Recorre todos los productos del inventario. Llama al método valorTotal() de la clase Producto. Suma todos esos valores.
+public int calcularValorTotal() {
+    int total = 0;
+    for (Producto producto : productos) {
+        total += producto.valorTotal();
+    }
+    return total;
+}
+```
+
+clase `Main`
+```java
+// Creamos los objetos Productos
+Producto p1 = new Producto("Coca-Cola", 2114, (byte) 10);
+Producto p2 = new Producto("Pepsi", 1233, (byte) 8);
+Producto p3 = new Producto("Agua", 1316, (byte) 15);
+
+// Creamos el objetp Inventario
+Inventario inventario = new Inventario();
+
+// Agreagamos los objetos Prodcutos a la lista
+inventario.agregarProducto(p1);
+inventario.agregarProducto(p2);
+inventario.agregarProducto(p3);
+
+// Buscamos un prodcuto especifico y validamos si esta en la lista
+Producto encontrado = inventario.buscarProducto("Pepsi");
+if (encontrado != null) {
+    System.out.println("Producto encontrado: " + encontrado.getNombre());
+} else {
+    System.out.println("Producto no encontrado");
+}
+
+// Calcula el valor total del inventario.
+double valorTotal = inventario.calcularValorTotal();
+System.out.println("El valor total del inventario es: " + valorTotal);
+```
+
+### 17. Sistema Académico
+### Codigo:
+```
+POO/Relaciones/
+        Curso.java
+        Docente.java
+        Estudiante.java
+        Main.java
+```
+
+**Proposito:** Crea clases Curso, Docente y Estudiante. Cada curso tiene un docente y varios estudiantes. Implementa un método que muestre el listado de estudiantes por curso.
+
+**Conceptos:** relaciones uno a muchos.
+
+**Desarrollo:**
+
+Creamos la clase `Docente`, junto con los atributos `String nombre` y `String especialidad`. Creamos el constructor, junto con los metodos `get` para los atributos, junto con el metodo `String toString()` que retorna informacion sobre el docente.
+
+Misma informacion para la clase `Estudiante`, junto con el metodo `toString()`, que retorna la informacion del esrudiante.
+
+clase `Curso.java`
+```java
+// Atributos de la clase
+private String nombre;
+private Docente docente;
+private List<Estudiante> estudiantes; // Lista para guardar los estudiantes
+
+public Curso(String nombre, Docente docente) {
+    this.nombre = nombre;
+    this.docente = docente;
+    this.estudiantes = new ArrayList<>(); // Inicializamos la lista Estudiante con el ArrayList 
+}
+
+// Agregar estudiantes a la lista
+public void agregarEstudiante(Estudiante estudiante) {
+    estudiantes.add(estudiante);
+}
+
+// Muestra informacion del curso desde los estudiante hasta los docentes
+public void mostrarListadoEstudiantes() {
+    System.out.println("Listado de estudiantes del curso: " + nombre);
+    System.out.println("Docente: " + docente.getNombre());
+    System.out.println("Especialidad del Docente: " + docente.getEspecialidad());
+    System.out.println("-------------------------------");
+    for (Estudiante estudiante : estudiantes) {
+        System.out.println(estudiante);
+    }
+}
+```
+
+clase `Main`
+```java
+// Creamos los objetos Docente
+Docente d1 = new Docente("Dr. Pérez", "Matemáticas");
+Docente d2 = new Docente("Lic. Gómez", "Ciencias");
+
+// Creamos los objetos Estudiante
+Estudiante e1 = new Estudiante("Juan", "12345");
+Estudiante e2 = new Estudiante("Ana", "12346");
+Estudiante e3 = new Estudiante("Carlos", "12347");
+
+// Creamos los objetos Curso
+Curso c1 = new Curso("Matemáticas Avanzadas", d1);
+Curso c2 = new Curso("Ciencias  Moderna", d2);
+
+// Agregamos los estudiantes a la lista
+c1.agregarEstudiante(e1);
+c1.agregarEstudiante(e2);
+c2.agregarEstudiante(e3);
+
+// Mostramos los estudiantes
+c1.mostrarListadoEstudiantes();
+System.out.println();
+c2.mostrarListadoEstudiantes();
+```
+
+### 18. Polimorfismo – Figuras Geométricas
+### Codigo:
+```
+POO/FigurasGeometricas/
+        Figura.java
+        Circulo.java
+        Cuadrado.java
+        Triangulo.java
+        Main.java
+```
+
+**Proposito:** Crea una clase base Figura con el método calcularArea(). Subclases: Cuadrado, Círculo y Triángulo, cada una con su propio cálculo.
+
+**Conceptos:** herencia, polimorfismo.
+
+**Desarrollo:**
+
+Creamos una clase padre abstracta `Figura`, con el metodo abstracto `calcularArea()`.
+
+clase `Cuadrado`
+```java
+// Atributo lado para calcular el area del cuadrado
+private double lado;
+
+// Creamos el constructor
+public Cuadrado(double lado) {
+    this.lado = lado;
+}
+
+// Modificamos el metodo calcularArea() de la clase padre, para realizar los calculos de acuerdo al cuadrado
+@Override
+public double calcularArea() {
+    return lado * lado;
+}
+```
+
+Para las clases Circulo y Triangulo, el proceso es el mismo solo que cambia la manera en que se calcula el area a cada firgura, junto con los atributos para realizar dichos calculos.
+
+clase `Main`
+```java
+// Creamos los objetos de las figuras
+Cuadrado cuadrado = new Cuadrado(5);
+Circulo circulo = new Circulo(3);
+Triangulo triangulo = new Triangulo(4, 6);
+
+// Imprimimos los resultados
+System.out.println("Área del Cuadrado: " + cuadrado.calcularArea());
+System.out.println("Área del Círculo: " + circulo.calcularArea());
+System.out.println("Área del Triángulo: " + triangulo.calcularArea());
+```
+
+### 19. Juego de Personajes
+### Codigo:
+```
+POO/JuegoPersonajes/
+        Personaje.java
+        Main.java
+```
+
+**Proposito:** Crea una clase Personaje con atributos: nombre, vida y poder. Implementa un método atacar() que descuente puntos de vida a otro personaje. Simula una batalla entre dos personajes.
+
+**Conceptos:** encapsulamiento, interacción entre objetos.
+
+**Desarrollo:**
+
+Creamos la clase `Personaje`, junto con los atributos `nombre`, `vida` y `poder`, junto con el constructor y el metodo `atacar()` y `estaVivo()`
+```java
+// El personaje que ejecuta el método atacar() le resta su poder a la vida del enemigo y muestra un mensaje describiendo el ataque.
+public void atacar(Personaje enemigo) {
+    enemigo.vida -= this.poder; 
+    System.out.println(this.nombre + " atacó a " + enemigo.nombre + " y le quitó " + this.poder + " puntos de vida.");
+}
+
+// Retorna true si la vida es mayor que 0. Para saber si el personaje sigue en combate.
+public boolean estaVivo() {
+    return vida > 0;
+}
+```
+
+clase `Main`
+```java
+// Creamos los objetos Personaje
+Personaje personaje1 = new Personaje("Guerrero", 100, 20);
+Personaje personaje2 = new Personaje("Mago", 80, 25);
+
+// Bule while que valida el combate mientras los dos estén vivos.
+while (personaje1.estaVivo() && personaje2.estaVivo()) {
+    // El personaje1 ataca al personaje2
+    personaje1.atacar(personaje2);
+    // Valida si sigue vivo
+    if (!personaje2.estaVivo()) {
+        System.out.println(personaje2.nombre + " ha sido derrotado.");
+        break;
+    }
+
+    // De igual forma
+    personaje2.atacar(personaje1);
+    if (!personaje1.estaVivo()) {
+        System.out.println(personaje1.nombre + " ha sido derrotado.");
+        break;
+    }
+}
+```
+
+### 20. Reloj Digital
+### Codigo: POO/RelojDigital.java
+
+**Proposito:** Crea una clase Reloj con atributos hora, minuto y segundo. Incluye métodos para incrementar segundos y mostrar la hora formateada correctamente.
+
+**Conceptos:** encapsulamiento, validación de datos.
+
+**Desarrollo:**
+
+```java
+// Creamos atributos
+private int hora;
+private int minuto;
+private int segundo;
+
+// Creamos el constructor, e inicializamos los atributos en cero
+public RelojDigital() {
+    this.hora = 0;
+    this.minuto = 0;
+    this.segundo = 0;
+}
+
+// Metodo para incrementar la hora
+public void incrementarSegundos() {
+    // Incrementamos el segundo de uno en uno
+    segundo++;
+    if (segundo == 60) {
+        // Cuando el segundo llegue a 60, vuelve y se inicia a 0, y el minuto avanza de uno en uno
+        segundo = 0;
+        minuto++;
+        if (minuto == 60) {
+            // Cuando el minuto llegue a 60, vuelve a 0, y la hora aumenta
+            minuto = 0;
+            hora++;
+            if (hora == 24) {
+                // Cuando la hora llegue a 24, esta vuelva a 0
+                hora = 0;
+            }
+        }
+    }
+}
+
+// mostramos la hora en formato de 2 dígitos:
+public String mostrarHora() {
+    return String.format("%02d:%02d:%02d", hora, minuto, segundo);
+}
+```
+```java
+// Creamos el objeto RelojDigital
+RelojDigital reloj = new RelojDigital();
+        
+while (true) {
+    // Limpia la consola, para que solo se vea la hora en una linea y no en varias imprimiendose.
+    System.out.print("\033[H\033[2J");
+    System.out.flush();
+    System.out.println("Reloj Digital:");
+    // Mostramos la hora
+    System.out.println(reloj.mostrarHora());
+            
+    // Espera cada 1 segundo y usamos el metodo de incrementar segundos
+    Thread.sleep(1000);
+    reloj.incrementarSegundos();
+}
+```
 
 ## Ejercicios de Razonamiento y Lógica Algorítmica
 
