@@ -19,18 +19,21 @@ public class AdivinaNumero {
         int aleatorio = rand.nextInt(50);
         
         System.out.println("Ingresa un numero: ");
-        byte numero = sc.nextByte();
+        
+        int intento = 0;
 
-        while (numero != aleatorio) {
+        do {
+            System.out.println("Ingresa nuevamente el numero: ");
+            intento = sc.nextInt();
             
-            if (numero > aleatorio) {
+            if (intento > aleatorio) {
                 System.out.println("Mas bajo.");
-            } else if (numero < aleatorio) {
+            } else if (intento < aleatorio) {
                 System.out.println("Mas alto.");
             } else {
                 System.out.println("Es correcto le atinaste al numero.");
             }
-        }
+        } while (intento != aleatorio);
         
         sc.close();
     }
